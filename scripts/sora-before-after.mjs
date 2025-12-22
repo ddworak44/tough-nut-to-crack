@@ -16,6 +16,7 @@
 
 import sharp from "sharp";
 import { readFile, writeFile } from "node:fs/promises";
+import { SORA_BEFORE_AFTER_PROMPT } from "../prompts/soraBeforeAfterPrompt.js";
 
 /* -------------------- config -------------------- */
 
@@ -210,16 +211,7 @@ async function createWhiteCanvasComposite(
 async function createVideoJob(inputReferencePath) {
   const fd = new FormData();
   fd.append("model", MODEL);
-  fd.append(
-    "prompt",
-    [
-      "The input reference is a white canvas showing two phone screenshots.",
-      "LEFT is the Before state and RIGHT is the After state.",
-      "Create a short video that smoothly transitions from the Before state to the After state.",
-      "Do not show the split layout in the output.",
-      "No text overlays. No hard cuts. Keep content non-graphic.",
-    ].join(" ")
-  );
+  fd.append("prompt", SORA_BEFORE_AFTER_PROMPT);
   fd.append("seconds", SECONDS);
   fd.append("size", SIZE);
 
