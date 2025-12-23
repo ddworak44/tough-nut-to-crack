@@ -1,0 +1,5 @@
+export const characterPrompt = `Here is a photo realistic image of a squirrel. Please generate a PNG image with a transparent background based on the requirements below. The goal is that we make a squirrel inspired by the whimsical and animated world of Zootopia. It should have a cartoon style face and body, with exaggerated proportions that are consistent with that of a big budget animated film.`;
+
+const feedbackPrompt = `This character looks a bit too unserious. I want the rendering to be of the protagonist, which has a wider range of emotions. The default should be a neutral expression. I would prefer if he was a bit taller, and had a more confident posture without being cocky or arrogant. His outfit should be like a casual college students. No headware or accessories.`;
+
+export const iterateCharacterPrompt = `Here is a rendering of a squirrel. It is of the style of a big budget animated film, particularly Zootopia。I want you to iterate upon it, making it more specific to the requirements below. ${feedbackPrompt}`;

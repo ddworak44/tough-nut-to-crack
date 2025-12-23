@@ -20,7 +20,7 @@ async function generateVeoVideo() {
   console.log("Requesting video generation from Veo 3.1...");
 
   let operation = await ai.models.generateVideos({
-    model: "veo-3.1-generate-preview",
+    model: "veo-2-generate-preview", // Changed from veo-3.1 to veo-2 for cheaper pricing
     prompt: prompt,
     image: {
       imageBytes: firstImage.toString("base64"),
@@ -28,7 +28,7 @@ async function generateVeoVideo() {
     },
     config: {
       aspectRatio: scale.aspectRatio.mobile,
-      resolution: scale.resolution.sd,
+      resolution: scale.resolution.sd, // Already using SD for lower cost
       lastFrame: {
         imageBytes: lastImage.toString("base64"),
         mimeType: "image/png",
