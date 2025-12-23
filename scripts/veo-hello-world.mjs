@@ -52,6 +52,18 @@ async function generateVeoVideo() {
 
   console.log("\nVideo generation complete!");
 
+  // Check for errors in the operation
+  if (operation.error) {
+    throw new Error(
+      `Video generation failed: ${JSON.stringify(operation.error, null, 2)}`
+    );
+  }
+
+  if (!operation.response || !operation.response.generatedVideos) {
+    console.log("Full operation object:", JSON.stringify(operation, null, 2));
+    throw new Error("No video was generated in the response.");
+  }
+
   // Download and save the video
   const generatedVideo = operation.response.generatedVideos[0];
   const video = generatedVideo.video;
