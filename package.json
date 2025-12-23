@@ -6,6 +6,7 @@
   "scripts": {
     "generate": "node scripts/generate-video.mjs",
     "veo:hello": "node scripts/veo-hello-world.mjs",
+    "image:hello": "node scripts/nano-banana-hello.mjs",
     "sora:before-after": "node scripts/sora-before-after.mjs"
   },
   "dependencies": {
