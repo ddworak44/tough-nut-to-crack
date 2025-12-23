@@ -53,7 +53,7 @@ async function generateBananaImage() {
       for (const part of candidates[0].content.parts) {
         if (part.inlineData) {
           const buffer = Buffer.from(part.inlineData.data, "base64");
-          const outputPath = "output/images/generated_banana.png";
+          const outputPath = `output/images/generated_image_${Date.now()}.png`;
           await writeFile(outputPath, buffer);
           console.log(`✅ Image saved as ${outputPath}`);
           imageFound = true;
