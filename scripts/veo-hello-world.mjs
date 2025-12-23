@@ -7,16 +7,10 @@
 // Requires:
 //   npm install @google/genai
 
-import { GoogleGenAI } from "@google/genai";
 import { readFile, writeFile } from "node:fs/promises";
+import { ai } from "../lib/veo.js";
 import { prompt } from "../prompts/prompt.js";
 import { scale } from "../options/scale.js";
-// Initialize the GenAI client
-const ai = new GoogleGenAI({
-  vertexai: true,
-  project: "poster-screenshot", // from your gcp.json
-  location: "us-central1", // Veo 3.1 is typically here
-});
 
 async function generateVeoVideo() {
   console.log("Reading images from assets...");
