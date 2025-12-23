@@ -10,6 +10,7 @@ import { readFile, writeFile } from "node:fs/promises";
 import { ai } from "../lib/veo.js";
 import { imagePrompt } from "../prompts/image-prompt.js";
 import { scale } from "../options/scale.js";
+import { buildPartsPayload } from "../GeneratePartsPayload.js";
 
 async function generateBananaImage() {
   console.log("Reading reference image from assets...");
@@ -22,6 +23,17 @@ async function generateBananaImage() {
   try {
     const modelId = "gemini-2.5-flash-image"; // As requested
 
+    // Build parts payload dynamically
+    const inputs = [
+      {
+        prompt: imagePrompt,
+        imageBuffer: inputImage,
+        mimeType: "image/png",
+      },
+    ];
+
+    const parts = buildPartsPayload(inputs);
+
     // We use the centralized 'ai' client.
     // Note: generateContent is the standard method for Gemini image/text models.
     const result = await ai.models.generateContent({
@@ -29,15 +41,7 @@ async function generateBananaImage() {
       contents: [
         {
           role: "user",
-          parts: [
-            { text: imagePrompt },
-            {
-              inlineData: {
-                data: inputImage.toString("base64"),
-                mimeType: "image/png",
-              },
-            },
-          ],
+          parts: parts,
         },
       ],
     });
