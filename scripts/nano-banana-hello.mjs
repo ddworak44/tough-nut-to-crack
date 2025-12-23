@@ -16,7 +16,7 @@ import { iterateCharacterPrompt } from "../prompts/character.js";
 
 async function generateBananaImage() {
   console.log("Reading reference image from assets...");
-  const inputImage = await readFile("./assets/scenes/bench.png");
+  const inputImage = await readFile("./assets/scenes/bench-2.png");
 
   console.log(
     "Requesting image generation from Nano Banana (Gemini) with reference..."

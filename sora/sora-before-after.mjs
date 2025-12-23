@@ -16,7 +16,7 @@
 
 import sharp from "sharp";
 import { readFile, writeFile } from "node:fs/promises";
-import { SORA_BEFORE_AFTER_PROMPT } from "../prompts/soraBeforeAfterPrompt.js";
+import { SORA_BEFORE_AFTER_PROMPT } from "./soraBeforeAfterPrompt.js";
 
 /* -------------------- config -------------------- */
 
