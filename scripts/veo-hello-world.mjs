@@ -9,7 +9,7 @@
 
 import { GoogleGenAI } from "@google/genai";
 import { readFile, writeFile } from "node:fs/promises";
-
+import { prompt } from "../prompts/prompt.js";
 // Initialize the GenAI client
 const ai = new GoogleGenAI({
   vertexai: true,
@@ -18,9 +18,6 @@ const ai = new GoogleGenAI({
 });
 
 async function generateVeoVideo() {
-  const prompt =
-    "A cinematic transition showing the evolution from the first state to the second state, maintaining consistent lighting and camera position.";
-
   console.log("Reading images from assets...");
   const firstImage = await readFile("./assets/before.png");
   const lastImage = await readFile("./assets/after.png");
