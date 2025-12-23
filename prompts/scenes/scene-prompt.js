@@ -1,12 +1,9 @@
-import { adhocPrompt } from "./adhoc/index.js";
+import { adhocPrompt } from "../adhoc/index.js";
 
-export const imagePrompt = `The input image is a rough hand-drawn sketch used ONLY as a spatial and compositional guide.
+export const scenePrompt = `The input image is a rough mockup used ONLY as a spatial and compositional guide.
 
 Interpret the sketch as follows:
-- The orange figure represents a humanoid animal character standing upright.
-- The character is holding a tall vertical object on the left.
-- Two tall vertical background elements rise behind the character.
-- The red shapes at the top represent a stylized canopy or large abstract forms overhead.
+${adhocPrompt}
 
 Ignore:
 - Line quality
@@ -30,6 +27,4 @@ Re-render the scene completely in a polished, cinematic, animated style similar 
 
 This should look like a final animation still, not a sketch, not concept art, and not a painting.
 
-Be sure to remove any foreign UI elements or text from the image, unless they are part of the scene.
-
-${adhocPrompt}`;
+Be sure to remove any foreign UI elements or text from the image, unless they are part of the scene.`;

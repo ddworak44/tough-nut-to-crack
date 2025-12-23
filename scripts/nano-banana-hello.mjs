@@ -8,15 +8,15 @@
 
 import { readFile, writeFile } from "node:fs/promises";
 import { ai } from "../lib/veo.js";
-import { imagePrompt } from "../prompts/image-prompt.js";
 import { characterPrompt } from "../prompts/character.js";
 import { scale } from "../options/scale.js";
+import { scenePrompt } from "../prompts/scenes/scene-prompt.js";
 import { buildPartsPayload } from "../GeneratePartsPayload.js";
 import { iterateCharacterPrompt } from "../prompts/character.js";
 
 async function generateBananaImage() {
   console.log("Reading reference image from assets...");
-  const inputImage = await readFile("./assets/squirrel-2.png");
+  const inputImage = await readFile("./assets/scenes/bench.png");
 
   console.log(
     "Requesting image generation from Nano Banana (Gemini) with reference..."
@@ -28,7 +28,7 @@ async function generateBananaImage() {
     // Build parts payload dynamically
     const inputs = [
       {
-        prompt: iterateCharacterPrompt,
+        prompt: scenePrompt,
         imageBuffer: inputImage,
         mimeType: "image/png",
       },
