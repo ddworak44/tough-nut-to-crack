@@ -10,6 +10,7 @@
 import { GoogleGenAI } from "@google/genai";
 import { readFile, writeFile } from "node:fs/promises";
 import { prompt } from "../prompts/prompt.js";
+import { scale } from "../options/scale.js";
 // Initialize the GenAI client
 const ai = new GoogleGenAI({
   vertexai: true,
@@ -32,6 +33,8 @@ async function generateVeoVideo() {
       mimeType: "image/png",
     },
     config: {
+      aspectRatio: scale.aspectRatio.mobile,
+      resolution: scale.resolution.sd,
       lastFrame: {
         imageBytes: lastImage.toString("base64"),
         mimeType: "image/png",
