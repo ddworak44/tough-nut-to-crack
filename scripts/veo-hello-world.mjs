@@ -80,7 +80,7 @@ async function generateVeoVideo() {
     throw new Error("No video bytes or URI found in the response.");
   }
 
-  const outputPath = "output/veo_hello_world.mp4";
+  const outputPath = `output/videos/veo_hello_world_${Date.now()}.mp4`;
   await writeFile(outputPath, videoBuffer);
 
   console.log(`✅ Generated video saved to ${outputPath}`);
